@@ -1,0 +1,4 @@
+import Link from 'next/link';
+export function Title({label,title,description}:{label:string;title:string;description:string}) {return <section className="page-title"><p className="eyebrow">{label}</p><h1>{title}</h1><p>{description}</p></section>}
+export function Pager({page,count,base}:{page:number;count:number;base:string}) {return <div className="pager"><span>{count.toLocaleString()} records · Page {page}</span><div>{page>1&&<Link href={`${base}${base.includes('?')?'&':'?'}page=${page-1}`}>← Previous</Link>}{page*25<count&&<Link href={`${base}${base.includes('?')?'&':'?'}page=${page+1}`}>Next →</Link>}</div></div>}
+export function DateLabel({value}:{value:string}) {return <time dateTime={value}>{new Date(value).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric',timeZone:'UTC'})}</time>}
